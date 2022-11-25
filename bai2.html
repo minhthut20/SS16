@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Apple = function (weight) {
+            this.weight = weight;
+            this.getWeight = function () {
+                return this.weight;
+            }
+            this.decreaseWeight = function () {
+                if (this.weight > 0) {
+                    this.weight--;
+                }
+            }
+            this.isEmpty = function () {
+                if (this.weight == 0) {
+                    return false;
+                } else if (this.weight > 0) {
+                    return true;
+                }
+            }
+        };
+        let Human = function (name, gender, weight) {
+            this.name = name
+            this.gender = gender
+            this.weight = weight
+            this.getName = function () {
+                return name;
+            }
+            this.getWeight = function () {
+                return weight;
+            }
+            this.isMale = function () {
+                if (gender === "Male" || gender === "male" || gender === "M" || gender === "m") {
+                    return true;
+                } else if (gender === "Female" || gender === "female" || gender === "F" || gender === "f") {
+                    return false;
+                }
+            }
+            this.talk = function (message) {
+                return name + " said " + "'" + message + "'";
+            }
+            this.checkApple = function (apple) {
+                this.apple = apple;
+                console.log("Now apple's weight is " + this.apple.getWeight())
+                if (this.apple.getWeight() == 0) {
+                    console.log("There no more apple to eat");
+                }
+            }
+            this.eatApple = function (apple) {
+                this.apple = apple;
+                this.apple.decreaseWeight();
+                console.log("Now " + this.name + " weight is " + (weight += 1));
+            }
+        }
+        let apple = new Apple(10);
+        // console.log(apple.weight);
+        let adam = new Human("Adam", "male", 60);
+        let eva = new Human("Eva", "Female", 45);
+        console.log(eva.isMale());
+        console.log(adam.talk("Bạn là ai?"));
+        console.log(eva.talk("Tôi là Eva. Còn bạn?"));
+        console.log(adam.talk("Mình là Adam"));
+        console.log(eva.talk("Nhìn kìa! Có lẽ tớ đã nhìn thấy gì đó?"));
+        console.log(adam.talk("Cái thứ màu đỏ,phải không?"));
+        console.log(eva.talk("Chắc là đồ ăn?"));
+        console.log(adam.checkApple(apple));
+        console.log(adam.talk("Chúng ta có thể ăn chúng "));
+        console.log(eva.checkApple(apple));
+        console.log(eva.talk("Hãy ăn trước đi"));
+        adam.eatApple(apple);
+        eva.eatApple(apple);
+        adam.eatApple(apple);
+        eva.eatApple(apple);
+        adam.eatApple(apple);
+        eva.eatApple(apple);
+        adam.eatApple(apple);
+        eva.eatApple(apple);
+        adam.eatApple(apple);
+        eva.eatApple(apple);
+        eva.checkApple(apple);
+    </script>
+</body>
+
+</html>

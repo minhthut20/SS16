@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let SwitchButton = function (status) {
+            this.status = status;
+            this.lamp = false;
+            this.connectToLamp = function () {
+                this.lamp = true;
+                console.log("Đèn và công tắc đã được kết nối");
+            }
+            this.switchOff = function (electriclamp) {
+                if (this.lamp == false) {
+                    console.log("Đèn và công tắc chưa kết nối với nhau");
+                }
+                else {
+                    electricLamp.status = false;
+                    this.status = false;
+                    console.log("Đèn đã tắt");
+                }
+            }
+            this.switchOn = function (electriclamp) {
+                if (this.lamp == false) {
+                    console.log("Đèn và công tắc chưa kết nối với nhau");
+                }
+                else {
+                    electricLamp.status = true;
+                    this.status = true;
+                    console.log("Đèn đã bật");
+                }
+            }
+        }
+        let ElectricLamp = function (status) {
+            this.status = status;
+            // this.turnOn = function (switchbuttom) {
+            //     this.status = true;
+            //     return this.status;
+            // }
+            // this.turnOff = function (switchbuttom) {
+            //     this.status = đfalse;
+            //     return this.status;
+            // }
+            this.lamp = function () {
+                if (this.status == true) {
+                    console.log("Đèn đang sáng");
+                }
+                else {
+                    console.log("Đèn đang tắt");
+                }
+            }
+        }
+        let switchbutton = new SwitchButton(false);
+        let electricLamp = new ElectricLamp("Off");
+        console.log(switchbutton.lamp);
+        switchbutton.switchOn(electricLamp);
+        switchbutton.switchOff(electricLamp);
+        switchbutton.connectToLamp();
+        for (let i = 0; i < 10; i++) {
+            switchbutton.switchOn(electricLamp);
+            electricLamp.lamp();
+            switchbutton.switchOff(electricLamp);
+            electricLamp.lamp();
+        }
+
+    </script>
+</body>
+
+</html>
