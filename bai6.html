@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Remote = function (model) {
+            this.model = model;
+
+            this.changeChannel = function (tivi, num) {
+                if (tivi.status == true) {
+                    tivi.channel = num;
+                    console.log("Tivi đã chuyển đến kênh " + num);
+                    return tivi.channel;
+                } else {
+                    console.log("Xin mời bật TV");
+                }
+            }
+            this.upVolumeRM = function (tivi) {
+                tivi.volume++;
+                console.log("Âm lượng hiện tại: " + tivi.volume);
+                return tivi.volume;
+            }
+            this.downVolumeRM = function (tivi) {
+                tivi.volume--;
+                console.log("Âm lượng hiện tại: " + tivi.volume);
+                return tivi.volume;
+            }
+            this.offTVRM = function (tivi) {
+                tivi.status = false;
+                console.log('Tivi đã được tắt.');
+                return tivi.status;
+            }
+            this.onTVRM = function (tivi) {
+                tivi.status = true;
+                console.log('Tivi đã được bật.');
+                return tivi.status;
+            }
+        }
+
+        let Tivi = function (name, channel, volume, status) {
+            this.name = name;
+            this.channel = channel;
+            this.volume = volume;
+            this.status = status;
+
+            this.getChannel = function () {
+                console.log("Kênh hiện tại đang bật là: " + this.channel);
+                return this.channel;
+            }
+
+            this.getStatus = function () {
+                if (this.status == true) {
+                    console.log("Tivi hiện tại đang bật.");
+                    return this.status;
+                } else {
+                    console.log("Tivi hiện tại đang tắt.");
+                    return this.status;
+                }
+            }
+
+            this.switchChannel = function (channel) {
+                if (this.status == true) {
+                    this.channel = channel;
+                    console.log("Tivi đã chuyển đến kênh " + channel);
+                    return this.channel;
+                } else {
+                    console.log("Xin mời bật TV");
+                }
+            }
+            this.upVolumeTV = function () {
+                if (this.status == true) {
+                    this.volume++;
+                    console.log("Âm lượng hiện tại: " + this.volume);
+                    return this.volume;
+                } else {
+                    console.log("Xin mời bật TV");
+                }
+            }
+            this.downVolumeTV = function () {
+                if (this.status == true) {
+                    this.volume--;
+                    console.log("Âm lượng hiện tại: " + this.volume);
+                    return this.volume;
+                } else {
+                    console.log("Xin mời bật TV");
+                }
+            }
+            this.offTV = function (tele) {
+                this.status = false;
+                console.log('Tivi đã được tắt.');
+                return this.status;
+            }
+            this.onTV = function (tele) {
+                this.status = true;
+                console.log("Tivi hiện tại đang bật.");
+                return this.status;
+            }
+        }
+
+        let tivi1 = new Tivi("LG", 0, 40, false);
+        let remote1 = new Remote(123);
+        console.log(tivi1);
+        remote1.onTVRM(tivi1);
+        console.log(tivi1);
+        tivi1.switchChannel(1);
+        remote1.changeChannel(tivi1, 3);
+        tivi1.upVolumeTV();
+        tivi1.upVolumeTV();
+        remote1.offTVRM(tivi1);
+        remote1.onTVRM(tivi1);
+        remote1.upVolumeRM(tivi1);
+        remote1.upVolumeRM(tivi1);
+        
+    </script>
+</body>
+
+</html>
