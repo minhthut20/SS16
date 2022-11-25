@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Rat = function (name, weight, speed, status) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.status = status;
+            this.talk = function () {
+                if (this.status == true) {
+                    console.log("Chít.... Chít .....");
+                }
+                else {
+                    console.log("Tiễn đưa linh hồn Rat ");
+                }
+            }
+        }
+        let Cat = function (name, weight, speed, status) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.status = status;
+            this.talk = function () {
+                if (this.status == true) {
+                    console.log("Meo.... Meo .....");
+                }
+                else {
+                    console.log("Cat is dead ");
+                }
+            }
+            this.catchRat = function (mouse) {
+                if (this.speed > mouse.speed) {
+                    console.log("Chạy đâu cho thoát. HeHe....");
+                }
+                else {
+                    console.log("Bắt con khác đi !!!!!");
+                }
+            }
+            this.eatRat = function (mouse) {
+                if (mouse.status == true) {
+                    this.weight += mouse.weight;
+                    console.log("Chén nó ");
+                }
+                else {
+                    console.log("A Vượng thối quá. Chê ..... ");
+                }
+            }
+        }
+        let cat = new Cat("Thu", 10, 99, true)
+        let rat = new Rat("Vượng", 1, 10, true)
+
+        cat.talk();
+        cat.catchRat(rat);
+        cat.eatRat(rat);
+        rat.talk();
+    </script>
+</body>
+
+</html>
